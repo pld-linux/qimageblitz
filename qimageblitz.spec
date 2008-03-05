@@ -10,7 +10,7 @@ Source0:	http://dl.sourceforge.net/qimageblitz/%{name}-%{version}.tar.bz2
 URL:		http://sourceforge.net/project/showfiles.php?group_id=202856
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	kdelibs4-devel >= 9:4.0.0
+BuildRequires:	kde4-kdelibs-devel >= 4.0.0
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
