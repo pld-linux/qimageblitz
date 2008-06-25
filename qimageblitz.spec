@@ -42,11 +42,6 @@ qimageblitz.
 
 %build
 install -d build
-export kde_htmldir=%{_kdedocdir}
-export kde_libs_htmldir=%{_kdedocdir}
-export KDEDIR=%{_prefix}
-export QTDIR=%{_prefix}
-export PATH=$QTDIR/bin:$KDEDIR/bin:%{_datadir}/qt4/bin:$PATH
 cd build
 %cmake \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
