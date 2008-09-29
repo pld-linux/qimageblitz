@@ -8,6 +8,7 @@ Group:		X11/Libraries
 Source0:	http://dl.sourceforge.net/qimageblitz/%{name}-%{version}.tar.bz2
 # Source0-md5:	cb87c7f1c0455e8984ee4830f1e749cf
 URL:		http://sourceforge.net/projects/qimageblitz/
+BuildRequires:	QtGui-devel
 BuildRequires:	cmake
 BuildRequires:	kde4-kdelibs-devel >= 4.0.0
 BuildRequires:	qt4-qmake
@@ -44,10 +45,12 @@ qimageblitz.
 %build
 install -d build
 cd build
-%cmake \
+%cmake .. \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
-	-DLIB_INSTALL_DIR=%{_libdir} \
-	../
+	-DCMAKE_VERBOSE_MAKEFILE=ON \
+%if "%{_lib}" == "lib64"
+	-DLIB_SUFFIX=64
+%endif
 
 %{__make}
 
@@ -55,10 +58,7 @@ cd build
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} -C build install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	kde_htmldir=%{_kdedocdir} \
-	kde_libs_htmldir=%{_kdedocdir} \
-	kdelnkdir=%{_desktopdir} \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
