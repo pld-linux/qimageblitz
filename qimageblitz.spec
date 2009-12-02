@@ -11,6 +11,7 @@ URL:		http://sourceforge.net/projects/qimageblitz/
 BuildRequires:	QtGui-devel
 BuildRequires:	cmake
 BuildRequires:	kde4-kdelibs-devel >= 4.0.0
+BuildRequires:	qt4-build
 BuildRequires:	qt4-qmake
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
