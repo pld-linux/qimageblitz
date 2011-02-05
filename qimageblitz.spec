@@ -29,7 +29,7 @@ pamięci i szybkości działania) oraz obsługę MMX/SSE.
 
 %package devel
 Summary:	Header files for Blitz library
-Summary(pl.UTF.8):	Pliki nagłówkowe biblioteki Blitz
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki Blitz
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
