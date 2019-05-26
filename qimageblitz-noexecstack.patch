@@ -1,0 +1,8 @@
+--- a/blitz/asm_scale.S
++++ b/blitz/asm_scale.S
+@@ -815,3 +815,5 @@
+ SIZE(qimageScale_mmx_AARGBA)
+ 
+ #endif
++
++.section .note.GNU-stack,"",%progbits

@@ -2,11 +2,12 @@ Summary:	Blitz KDE/Qt image filter library
 Summary(pl.UTF-8):	Biblioteka filtrów obrazu Blitz dla KDE/Qt
 Name:		qimageblitz
 Version:	0.0.6
-Release:	4
+Release:	5
 License:	BSD
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/stable/qimageblitz/%{name}-%{version}.tar.bz2
 # Source0-md5:	0ae2f7d4e0876764a97ca73799f61df4
+Patch0:		%{name}-noexecstack.patch
 URL:		http://sourceforge.net/projects/qimageblitz/
 BuildRequires:	QtCore-devel >= 4
 BuildRequires:	QtGui-devel >= 4
@@ -43,6 +44,7 @@ qimageblitz.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 install -d build
