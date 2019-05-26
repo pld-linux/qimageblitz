@@ -2,18 +2,18 @@ Summary:	Blitz KDE/Qt image filter library
 Summary(pl.UTF-8):	Biblioteka filtrów obrazu Blitz dla KDE/Qt
 Name:		qimageblitz
 Version:	0.0.6
-Release:	3
-License:	GPL
+Release:	4
+License:	BSD
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/stable/qimageblitz/%{name}-%{version}.tar.bz2
 # Source0-md5:	0ae2f7d4e0876764a97ca73799f61df4
 URL:		http://sourceforge.net/projects/qimageblitz/
-BuildRequires:	QtGui-devel
+BuildRequires:	QtCore-devel >= 4
+BuildRequires:	QtGui-devel >= 4
 BuildRequires:	cmake
-BuildRequires:	kde4-kdelibs-devel >= 4.0.0
-BuildRequires:	qt4-build
-BuildRequires:	qt4-qmake
-BuildRequires:	rpmbuild(macros) >= 1.129
+BuildRequires:	qt4-build >= 4
+BuildRequires:	qt4-qmake >= 4
+BuildRequires:	rpmbuild(macros) >= 1.605
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -32,6 +32,7 @@ Summary:	Header files for Blitz library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki Blitz
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	QtGui-devel >= 4
 
 %description devel
 Header files needed for build programs that use qimageblitz.
@@ -46,12 +47,7 @@ qimageblitz.
 %build
 install -d build
 cd build
-%cmake .. \
-	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
-	-DCMAKE_VERBOSE_MAKEFILE=ON \
-%if "%{_lib}" == "lib64"
-	-DLIB_SUFFIX=64
-%endif
+%cmake ..
 
 %{__make}
 
@@ -69,12 +65,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc COPYING Changelog README.BLITZ
 %attr(755,root,root) %{_bindir}/blitztest
 %attr(755,root,root) %{_libdir}/libqimageblitz.so.4.0.0
 %attr(755,root,root) %ghost %{_libdir}/libqimageblitz.so.4
 
 %files devel
 %defattr(644,root,root,755)
+%doc README.PORTING
 %attr(755,root,root) %{_libdir}/libqimageblitz.so
 %dir %{_includedir}/qimageblitz
 %{_includedir}/qimageblitz/blitzcpu.h
